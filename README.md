@@ -1,3 +1,3 @@
 # orgchart
 
-# Use Only Html + CSS and JS Library from bootstrap.
+Use Only Html + CSS and JS Library from bootstrap. its customizable via css and can be add to limitless branch....
