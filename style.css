@@ -1,0 +1,125 @@
+body {
+    background-color: #dad6d6;
+}
+
+.nodecontent h5 {
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+.nodeheader p {
+    font-weight: bold;
+}
+
+.level-2 {min-width: 150px;}
+.level-3 {min-width: 150px;}
+.level-4 {min-width: 150px;}
+
+.nodebodyHide {
+    display: none;
+}
+
+.orgchart {
+    display: inline-block;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.nodecontent {
+    background-color: white;
+    min-height: 60px;
+    color: black;
+    text-align: center;
+    padding-inline: 15px;
+    padding-block: 5px;
+    border-radius: 15px;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.orgchart, .orgchart ul {
+    padding: 0;
+    margin: 0;
+}
+
+/*align children horizontally using CSS flex*/
+.orgchart ul {
+    display: flex;
+}
+
+/*align nodecontent and children list vertically*/
+.orgchart li {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/*arrange the nodecontent centered above the children list*/
+.orgchart .nodecontent {
+    align-self: center;
+    position: relative;
+    margin: 20px 5px;
+}
+
+.orgchart .collapsed > ul {
+    display: none;
+}
+
+/*connections*/
+.orgchart li::before,
+.orgchart .nodecontent::after,
+.orgchart .nodecontent::before {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border: 0px solid #a32a2a;
+}
+
+.orgchart li:not(:only-child)::before {
+    border-top-width: 2px;
+    width: 100%;
+    height: 20px;
+    top: 0px;
+}
+
+.orgchart li:first-child::before {
+    width: calc(50% + 1px);
+    right: 0;
+    border-left-width: 2px;
+    border-top-left-radius: 7px;
+}
+
+.orgchart li:last-child::before {
+    width: calc(50% + 1px);
+    border-right-width: 2px;
+    border-top-right-radius: 7px;
+}
+
+.orgchart .nodecontent::after,
+.orgchart .nodecontent::before {
+    border-left-width: 2px;
+    width: 2px;
+    height: 20px;
+    left: calc(50% - 1px);
+}
+
+.orgchart .nodecontent::before {
+    top: -20px;
+}
+.orgchart .nodecontent::after {
+    bottom: -20px;
+}
+
+.orgchart li:first-child:not(:only-child) > .nodecontent::before,
+.orgchart li:last-child:not(:only-child) > .nodecontent::before {
+    border-left-width: 0px;
+}
+
+.orgchart .leaf > .nodecontent::after,
+.orgchart .root > .nodecontent::before,
+.orgchart .collapsed > .nodecontent::after {
+    display: none;
+}
